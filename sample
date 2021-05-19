@@ -1,0 +1,15 @@
+src=${dst//\//-}
+dir=${dst%/*}
+mkdir -p ${dir}
+if [[ `md5sum ${dst}` = ${md5sum}* ]]
+then
+    echo -e "\033[32m${dst} ok\033[0m"
+else
+    cat split/${src}* > ${dst}
+    if [[ `md5sum ${dst}` = ${md5sum}* ]]
+    then
+        echo -e "\033[32m${dst} ok\033[0m"
+    else
+        echo -e "\033[31m${dst} bad\033[0m"
+    fi
+fi
