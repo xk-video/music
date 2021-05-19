@@ -19,14 +19,6 @@ fi
 
 from=$to
 echo $from
-to=${from//(/_}
-echo $to
-if [ "$from" != "$to" ];then
-	mv "${from}" $to
-fi
-
-from=$to
-echo $from
 to=${from//)/_}
 echo $to
 if [ "$from" != "$to" ];then
@@ -64,6 +56,24 @@ echo $to
 if [ "$from" != "$to" ];then
 	mv "${from}" $to
 fi
+
+
+from=$to
+echo $from
+to=${from//[/_}
+echo $to
+if [ "$from" != "$to" ];then
+	mv "${from}" $to
+fi
+
+from=$to
+echo $from
+to=${from//]/_}
+echo $to
+if [ "$from" != "$to" ];then
+	mv "${from}" $to
+fi
+
 
 from=$to
 echo $from
